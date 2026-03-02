@@ -150,12 +150,12 @@ const I18N = {
             favOnly: "Favorites only",
         },
         info: {
-            title: "GTPO AI",
+            title: "ENIGMA AI",
             cards: [
                 {
                     id: "models",
                     label: "VIP AI MODELS",
-                    title: "GTPO Orion, Mega and Unity",
+                    title: "ENIGMA Orion, Mega and Unity",
                     text: "How the models are trained and how VIP mode differs from basic.",
                     modalTag: "VIP AI MODELS",
                     modalTitle: "Orion, Mega, Atlas & Unity — trading cores",
@@ -172,12 +172,12 @@ const I18N = {
                 {
                     id: "bot",
                     label: "HOW THE BOT WORKS",
-                    title: "GTPO Trading Core architecture",
+                    title: "ENIGMA Trading Core architecture",
                     text: "Filtered signals, risk-management and protection from noisy setups.",
                     modalTag: "WHY OUR BOT",
-                    modalTitle: "GTPO Trading Core — engine of the mini app",
+                    modalTitle: "ENIGMA Trading Core — engine of the mini app",
                     modalHtml: `
-            <p><strong>GTPO Trading Core</strong> ingests quotes and discards setups that fail quality checks.</p>
+            <p><strong>ENIGMA Trading Core</strong> ingests quotes and discards setups that fail quality checks.</p>
             <ul>
               <li><strong>Multi-level filters</strong> by volatility, spread and market phase.</li>
               <li><strong>Anti-noise</strong> on news and thin liquidity.</li>
@@ -203,7 +203,7 @@ const I18N = {
             items: [
                 {
                     q: "How does the bot generate signals?",
-                    a: `<p>GTPO analyzes market data and keeps only setups that pass risk and entry-quality filters.</p>`,
+                    a: `<p>ENIGMA analyzes market data and keeps only setups that pass risk and entry-quality filters.</p>`,
                 },
                 {
                     q: "What does VIP status give in the mini app?",
@@ -260,7 +260,7 @@ const I18N = {
             statusIdle: "Waiting for parameters",
             statusActive: "Analyzing…",
             statusDone: "Signal prepared",
-            idleLine1: "Select pair, expiry and AI model to see how GTPO core reacts.",
+            idleLine1: "Select pair, expiry and AI model to see how ENIGMA core reacts.",
             idleLine2: "The analyzer always shows which patterns the engine is focusing on.",
             modelLines: {
                 orion: [
@@ -318,7 +318,7 @@ const I18N = {
             favOnly: "Только избранное",
         },
         info: {
-            title: "GTPO AI",
+            title: "ENIGMA AI",
             cards: [
                 {
                     id: "models",
@@ -340,10 +340,10 @@ const I18N = {
                 {
                     id: "bot",
                     label: "КАК УСТРОЕН БОТ",
-                    title: "Архитектура GTPO Trading Core",
+                    title: "Архитектура ENIGMA Trading Core",
                     text: "Отфильтрованные сигналы, риск-менеджмент и защита от шумовых сделок.",
                     modalTag: "ПОЧЕМУ НАШ БОТ",
-                    modalTitle: "GTPO Trading Core — серверное ядро мини-бота",
+                    modalTitle: "ENIGMA Trading Core — серверное ядро мини-бота",
                     modalHtml: `
             <p>Ядро принимает поток котировок и отбрасывает всё, что не проходит по качеству.</p>
             <ul>
@@ -361,7 +361,7 @@ const I18N = {
                     modalTag: "ПОЧЕМУ POCKET OPTION",
                     modalTitle: "Специализация на одной бирже вместо десятка поверхностных",
                     modalHtml: `
-            <p>Мы фокусируем GTPO AI на <strong>Pocket Option</strong>, чтобы точнее моделировать ликвидность и гэпы.</p>
+            <p>Мы фокусируем ENIGMA AI на <strong>Pocket Option</strong>, чтобы точнее моделировать ликвидность и гэпы.</p>
           `,
                 },
             ],
@@ -369,7 +369,7 @@ const I18N = {
         faq: {
             title: "FAQ",
             items: [
-                { q: "Как бот генерирует сигналы?", a: `<p>GTPO анализирует рынок и оставляет только те сетапы, которые прошли фильтры по риску и качеству входа.</p>` },
+                { q: "Как бот генерирует сигналы?", a: `<p>ENIGMA анализирует рынок и оставляет только те сетапы, которые прошли фильтры по риску и качеству входа.</p>` },
                 { q: "Что даёт VIP-статус в мини-апп?", a: `<p>VIP открывает доступ к дополнительным ядрам и более тонким фильтрам.</p>` },
                 { q: "Насколько это безопасно для депозита?", a: `<p>Бот не имеет доступа к вашему счёту и не совершает сделки за вас. Любая торговля связана с риском.</p>` },
                 { q: "Нужен ли опыт в трейдинге?", a: `<p>Сигналы подаются просто: «актив → направление → экспирация → риск».</p>` },
@@ -402,7 +402,7 @@ const I18N = {
             regDesc: "REGULAR · недоступен в выходные",
             vipBadge: "VIP",
             vipOnlyDesc: "Доступно в VIP-режиме",
-            vipOnlyToast: "Эта опция доступна только с VIP-статусом в боте GTPO.",
+            vipOnlyToast: "Эта опция доступна только с VIP-статусом в боте ENIGMA.",
             popularBadge: "Выбор пользователей",
             modelDescriptions: {
                 orion: "Сканирует силу тренда и микрокоррекции по активу.",
@@ -474,7 +474,7 @@ const I18N = {
             favOnly: "Solo favoritos",
         },
         info: {
-            title: "GTPO AI",
+            title: "ENIGMA AI",
             cards: [
                 {
                     id: "models",
@@ -488,10 +488,10 @@ const I18N = {
                 {
                     id: "bot",
                     label: "CÓMO FUNCIONA EL BOT",
-                    title: "Arquitectura GTPO Trading Core",
+                    title: "Arquitectura ENIGMA Trading Core",
                     text: "Señales filtradas, gestión de riesgo y protección contra ruido.",
                     modalTag: "POR QUÉ NUESTRO BOT",
-                    modalTitle: "GTPO Trading Core — motor del mini-bot",
+                    modalTitle: "ENIGMA Trading Core — motor del mini-bot",
                     modalHtml: `<p>Recibe precios y descarta lo que no pasa filtros.</p>`,
                 },
                 {
@@ -601,10 +601,10 @@ const I18N = {
             favOnly: "केवल फ़ेवरेट",
         },
         info: {
-            title: "GTPO AI",
+            title: "ENIGMA AI",
             cards: [
                 { id: "models", label: "VIP AI मॉडल", title: "Orion, Mega, Atlas, Unity", text: "VIP में extra cores और filters.", modalTag: "VIP AI", modalTitle: "Trading cores", modalHtml: `<p>VIP unlocks more cores & filters.</p>` },
-                { id: "bot", label: "BOT कैसे काम करता है", title: "GTPO Trading Core", text: "Filtered signals, risk-management.", modalTag: "WHY", modalTitle: "Core engine", modalHtml: `<p>Price stream -> filters -> signal.</p>` },
+                { id: "bot", label: "BOT कैसे काम करता है", title: "ENIGMA Trading Core", text: "Filtered signals, risk-management.", modalTag: "WHY", modalTitle: "Core engine", modalHtml: `<p>Price stream -> filters -> signal.</p>` },
                 { id: "pocket", label: "POCKET OPTION", title: "एक broker पर focus", text: "Pocket Option specialization.", modalTag: "POCKET", modalTitle: "Deep focus", modalHtml: `<p>Better modeling & stability.</p>` },
             ],
         },
