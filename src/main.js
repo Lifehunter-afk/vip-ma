@@ -64,7 +64,7 @@ function startSignalLoadingText(titleEl, subEl) {
 }
 
 function injectGlobalFixStyles() {
-    const id = "GTPO-fix-styles-v3";
+    const id = "NOVA-fix-styles-v3";
     if (document.getElementById(id)) return;
 
     const style = document.createElement("style");
@@ -601,10 +601,10 @@ const I18N = {
             favOnly: "केवल फ़ेवरेट",
         },
         info: {
-            title: "ENIGMA AI",
+            title: "GTPO AI",
             cards: [
                 { id: "models", label: "VIP AI मॉडल", title: "Orion, Mega, Atlas, Unity", text: "VIP में extra cores और filters.", modalTag: "VIP AI", modalTitle: "Trading cores", modalHtml: `<p>VIP unlocks more cores & filters.</p>` },
-                { id: "bot", label: "BOT कैसे काम करता है", title: "ENIGMA Trading Core", text: "Filtered signals, risk-management.", modalTag: "WHY", modalTitle: "Core engine", modalHtml: `<p>Price stream -> filters -> signal.</p>` },
+                { id: "bot", label: "BOT कैसे काम करता है", title: "GTPO Trading Core", text: "Filtered signals, risk-management.", modalTag: "WHY", modalTitle: "Core engine", modalHtml: `<p>Price stream -> filters -> signal.</p>` },
                 { id: "pocket", label: "POCKET OPTION", title: "एक broker पर focus", text: "Pocket Option specialization.", modalTag: "POCKET", modalTitle: "Deep focus", modalHtml: `<p>Better modeling & stability.</p>` },
             ],
         },
@@ -855,24 +855,44 @@ function setupDailyTurnover() {
     const changeAmountEl = document.querySelector(".js-balance-change-amount");
     if (!valueEl || !changeEl || !changeAmountEl) return;
 
-    const MS_PER_DAY = 24 * 60 * 60 * 1000;
-    const START_BASE = 1500;
-    const DAILY_GROWTH = 45;
-    const startDateUTC = Date.UTC(2024, 0, 1);
-
     const now = new Date();
     const utcMs = now.getTime() + now.getTimezoneOffset() * 60 * 1000;
     const mskMs = utcMs + 3 * 60 * 60 * 1000;
-    const dayIndex = Math.max(0, Math.floor((mskMs - startDateUTC) / MS_PER_DAY));
-    const prevDayIndex = Math.max(0, dayIndex - 1);
 
-    function valueForDay(i) {
-        const noise = (Math.sin(i * 1.7) + Math.sin(i * 0.4)) * 5;
-        return START_BASE + i * DAILY_GROWTH + noise;
+    const MORNING_HOUR = 7;
+    const EVENING_HOUR = 20;
+    const MORNING_VALUE = 5155;
+    const EVENING_VALUE = 40000;
+
+    const MS_PER_DAY = 24 * 60 * 60 * 1000;
+    const dayNoiseK = 0.55;
+
+    function clamp(x, a, b) {
+        return Math.max(a, Math.min(b, x));
     }
 
-    const today = valueForDay(dayIndex);
-    const yesterday = valueForDay(prevDayIndex);
+    function easeInOut(t) {
+        return t * t * (3 - 2 * t);
+    }
+
+    function valueAtTimestamp(tsMskMs) {
+        const dayStartMs = Math.floor(tsMskMs / MS_PER_DAY) * MS_PER_DAY;
+        const morningMs = dayStartMs + MORNING_HOUR * 60 * 60 * 1000;
+        const eveningMs = dayStartMs + EVENING_HOUR * 60 * 60 * 1000;
+
+        const t = clamp((tsMskMs - morningMs) / Math.max(1, eveningMs - morningMs), 0, 1);
+        const eased = easeInOut(t);
+
+        const dayIndex = dayStartMs / MS_PER_DAY;
+        const dayNoise = (Math.sin(dayIndex * dayNoiseK) + Math.sin(dayIndex * 0.17)) * 120;
+        const raw = MORNING_VALUE + (EVENING_VALUE - MORNING_VALUE) * eased + dayNoise * 0.15;
+
+        const minVal = MORNING_VALUE - 180;
+        return clamp(raw, minVal, EVENING_VALUE);
+    }
+
+    const today = valueAtTimestamp(mskMs);
+    const yesterday = valueAtTimestamp(mskMs - MS_PER_DAY);
     const diff = today - yesterday;
     const pct = yesterday > 0 ? (diff / yesterday) * 100 : 0;
 
